@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -7,6 +8,8 @@ class Topic(models.Model):
 
     date_added = models.DateTimeField(auto_now_add=True)
     #auto_now_add=True -- set this attribute to the current date and time
+
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.text
