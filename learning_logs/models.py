@@ -27,6 +27,6 @@ class Entry(models.Model):
         verbose_name_plural = 'entries'
     
     def __str__(self):
-        return f"{self.text[:50]}..."  
-        #return str(self.text)[:50] + "..."
+        #return f"{self.text[:50]}..."  
+        return str(self.text)[:50] + "..."
 
