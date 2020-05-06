@@ -1,30 +1,45 @@
 {% extends "learning_logs/base.html" %}
 
-{% block content %}
+{% block page_header %}
+    <h1>Topics</h1>
+{% endblock page_header %}
 
+{% block content %}
+    <ul>
+        {% for topic in topics %}
+        <li><h3>
+            <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
+        </h3></li>
+        {% empty %}
+            <li><h3>No topics have been added yet.</h3></li>
+        {% endfor %}
+    </ul>
+
+<h3><a href="{% url 'learning_logs:new_topic' %}">Add a new topic</a></h3>
+{% endblock content %}
+
+<!-- 
     <p>Topics</p>
 
-    <!--In standard HTML, a bulleted list is called an unordered list
-    and is indicatied by the tage <ul></ul>. -->
+    In standard HTML, a bulleted list is called an unordered list
+    and is indicatied by the tage <ul></ul>. 
     <ul>
-        <!-- for loop to loop through each topic
-         NOTE: not like python, here needs a endfor -->
+        #for loop to loop through each topic
+         #NOTE: not like python, here needs a endfor 
         {% for topic in topics %}
 
-        <!-- To print a variable in a template, wrap the 
-            variable name in double braces. -->
-       <!--  <li>{{ topic }}</li>  -->  <!-- li - list item -->
+        # To print a variable in a template, wrap the 
+         #   variable name in double braces. 
+         <li>{{ topic }}</li>   #li - list item 
 
         <li>
             <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
         </li>
-        {% empty %}  <!-- if the list is empty then display message-->
+        {% empty %}     #if the list is empty then display message
         <li>No topics have been added yet.</li>
         {% endfor %}
     </ul>
 
     <a href="{% url 'learning_logs:new_topic' %}">Add a new topic</a>
-
-
-{% endblock content %}
+ -->
 
